@@ -288,7 +288,7 @@ func (t *Transport) updateToken(tok *Token, v url.Values) error {
 	}
 
 	body := make([]byte, r.ContentLength)
-	_, err = r.Body.Read(body)
+	n, err := r.Body.Read(body)
 	if err != nil && int64(n) != r.ContentLength {
 		return err
 	}
