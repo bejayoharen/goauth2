@@ -44,6 +44,7 @@ import (
 	"os"
 	"strconv"
 	"time"
+	"io/ioutil"
 )
 
 type OAuthError struct {
@@ -287,9 +288,8 @@ func (t *Transport) updateToken(tok *Token, v url.Values) error {
 		return OAuthError{"updateToken", r.Status}
 	}
 
-	body := make([]byte, r.ContentLength)
-	n, err := r.Body.Read(body)
-	if err != nil && int64(n) != r.ContentLength {
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
 		return err
 	}
 
