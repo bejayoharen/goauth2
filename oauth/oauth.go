@@ -308,7 +308,7 @@ func (t *Transport) updateToken(tok *Token, v url.Values) error {
 		b.Access = vals.Get("access_token")
 		expires_in, err := strconv.ParseInt(vals.Get("expires"), 10, 64)
 		if err != nil {
-			expires_in, err := strconv.ParseInt(vals.Get("expires_in"), 10, 64)
+			expires_in, err = strconv.ParseInt(vals.Get("expires_in"), 10, 64)
 			if err != nil {
 				return err
 			}
