@@ -287,11 +287,12 @@ func (t *Transport) updateToken(tok *Token, v url.Values) error {
 	if r.StatusCode != 200 {
 		return OAuthError{"updateToken", r.Status}
 	}
-
+/*
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		return err
 	}
+*/
 
 	var b struct {
 		Access    string        `json:"access_token"`
