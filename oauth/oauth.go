@@ -298,7 +298,7 @@ func (t *Transport) updateToken(tok *Token, v url.Values) error {
 		Refresh   string        `json:"refresh_token"`
 		ExpiresIn time.Duration `json:"expires_in"`
 	}
-
+/*
 	if r.Request.Host == "graph.facebook.com" {
 		vals, err := url.ParseQuery(string(body))
 		if err != nil {
@@ -315,10 +315,13 @@ func (t *Transport) updateToken(tok *Token, v url.Values) error {
 		}
 		b.ExpiresIn = time.Duration(expires_in)
 	} else {
+*/
 		if err = json.NewDecoder(r.Body).Decode(&b); err != nil {
 			return err
 		}
+/*
 	}
+*/
 
 	tok.AccessToken = b.Access
 	// Don't overwrite `RefreshToken` with an empty value
